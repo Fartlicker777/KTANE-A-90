@@ -26,7 +26,7 @@ public class A90 : MonoBehaviour {
    public Image Static;
    public Image Stopsign;
 
-   float MovementOpportunty = 27;
+   float MovementOpportunty = 17;
    int AILevel = 20;
    int FailedMovements = 0;
 
@@ -168,7 +168,7 @@ public class A90 : MonoBehaviour {
    IEnumerator Wait () {
       while (true) {
          yield return new WaitForSeconds(DEBUGMODEACTIVE ? 7 : MovementOpportunty);
-         if (Rnd.Range(1, 51) <= AILevel + FailedMovements * 2 || (DEBUGMODEACTIVE && DEBUGMODEALWAYSPASS)) {
+         if (Rnd.Range(1, 101) <= AILevel + FailedMovements * 2 || (DEBUGMODEACTIVE && DEBUGMODEALWAYSPASS)) {
             StartCoroutine(Attack());
          }
          else {
