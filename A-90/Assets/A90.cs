@@ -63,11 +63,12 @@ public class A90 : MonoBehaviour {
       {
          { "Filename", "A90Settings.json" },
          { "Name", "A90 Settings" },
-         { "Listing", new List<Dictionary<string, object>>{
+         { "Listings", new List<Dictionary<string, object>>{
             new Dictionary<string, object>
             {
-               { "Key", "AI Level" },
-               { "Text", "Affects how often A-90 attacks. Ranges from 1-50 (at a default of 20 AI), with higher AI levels making A-90 attack more often." },
+               { "Key", "AiLevel" },
+               { "Text", "AI Level" },
+               { "Description", "Affects how often A-90 attacks. Ranges from 1-50 (at a default of 20 AI),\nwith higher AI levels making A-90 attack more often." }
             }
          } }
       }
@@ -169,6 +170,7 @@ public class A90 : MonoBehaviour {
       while (true) {
          yield return new WaitForSeconds(DEBUGMODEACTIVE ? 7 : MovementOpportunty);
          if (Rnd.Range(1, 101) <= AILevel + FailedMovements * 2 || (DEBUGMODEACTIVE && DEBUGMODEALWAYSPASS)) {
+            FailedMovements = 0;
             StartCoroutine(Attack());
          }
          else {
